@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>DOM Manipulation Examples</h1>
+      <p>Open the browser console (F12) to see the output</p>
+
+      <div class="section">
+        <h2>Selection Examples</h2>
+        <div id="header">Header Text</div>
+        <div class="item">Item 1</div>
+        <div class="item">Item 2</div>
+        <div class="item">Item 3</div>
+        <p>Paragraph 1</p>
+        <p>Paragraph 2</p>
+        <p>Paragraph 3</p>
+        <button class="btn">Button 1</button>
+        <button class="btn">Button 2</button>
+        <button class="btn">Button 3</button>
+      </div>
+
+      <div class="section">
+        <h2>Created Elements Will Appear Below</h2>
+        <div id="app"></div>
+      </div>
+      <button id="clickMe">Click Me!</button>
+      <button id="resetBtn">Reset</button>
+
+      <div id="output">Click the button</div>
+
+      <button id="myButton">Double-click me</button>
+      <p id="output1">Double-click the button</p>
+      <button id="myButton2">Press and release me</button>
+      <p id="output">Status: Waiting</p>
+
+      <!-- Mouse enter/leave + mousedown/up -->
+      <div
+        id="mouseBtn"
+        style="
+          width: 200px;
+          height: 100px;
+          background-color: lightblue;
+          border: 1px solid black;
+          margin: 10px 0;
+        "
+      >
+        Hover
+      </div>
+
+      <p id="hoverOutput">Event: -</p>
+      <!-- Mouse move events -->
+      <div
+        id="moveDiv"
+        style="
+          width: 200px;
+          height: 100px;
+          background-color: lightgreen;
+          border: 1px solid black;
+          margin: 10px 0;
+        "
+      >
+        Move mouse here (mousemove)
+      </div>
+      <p id="moveOutput">Event: -</p>
+
+      <!-- Right click event -->
+      <button id="rightClickBtn">Right click me (contextmenu)</button>
+      <p id="rightClickOutput">Event: -</p>
+
+      <!-- Scroll event -->
+      <div
+        id="scrollDiv"
+        style="
+          width: 200px;
+          height: 100px;
+          background-color: lightyellow;
+          border: 1px solid black;
+          margin: 10px 0;
+          overflow: auto;
+        "
+      >
+        <div style="height: 200px">
+          Scroll inside me<br />Line 1<br />Line 2<br />Line 3<br />Line 4<br />Line
+          5
+        </div>
+      </div>
+      <p id="scrollOutput">Event: -</p>
+    </div>
+    <script src="dom.js"></script>
+    <script src="events/click.js"></script>
+    <script src="events/mouse.js"></script>
+  </body>
+</html>
