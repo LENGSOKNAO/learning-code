@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* Container styles */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      }
+
+      /* Products grid */
+      .products {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        padding: 20px 0;
+      }
+
+      /* Product card styles */
+      .products a {
+        display: flex;
+        flex-direction: column;
+        text-decoration: none;
+        background: white;
+        border-radius: 16px;
+        overflow: hidden;
+        transition: all 0.25s ease;
+        border: 1px solid #eaeef2;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        height: 100%;
+      }
+
+      .products a:hover {
+        border-color: transparent;
+        box-shadow: 0 20px 30px -10px rgba(0, 100, 200, 0.15);
+        transform: translateY(-4px);
+      }
+
+      /* Image styles */
+      .image {
+        width: 100%;
+        height: 260px;
+        object-fit: contain;
+        background: #f8fafc;
+        padding: 24px;
+        transition: transform 0.3s ease;
+        border-bottom: 1px solid #eaeef2;
+      }
+
+      .products a:hover .image {
+        transform: scale(1.03);
+      }
+
+      /* Title styles */
+      .title {
+        font-size: 16px;
+        font-weight: 500;
+        color: #1e293b;
+        line-height: 1.4;
+        margin: 16px 16px 8px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        min-height: 44px;
+      }
+
+      /* Price styles */
+      .price {
+        font-size: 22px;
+        font-weight: 700;
+        color: #0f172a;
+        margin: 0 16px 8px;
+      }
+
+      .price::before {
+        content: "$";
+        font-size: 15px;
+        font-weight: 500;
+        margin-right: 2px;
+        color: #475569;
+        vertical-align: super;
+      }
+
+      /* Description styles */
+      .description {
+        font-size: 14px;
+        color: #475569;
+        line-height: 1.5;
+        margin: 0 16px 12px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      /* Category styles */
+      .category {
+        font-size: 12px;
+        font-weight: 600;
+        color: #2563eb;
+        background: #eef2ff;
+        padding: 6px 12px;
+        border-radius: 30px;
+        margin: 0 16px 12px;
+        display: inline-block;
+        width: fit-content;
+        text-transform: capitalize;
+        letter-spacing: 0.3px;
+      }
+
+      /* Rating styles */
+      .products a p {
+        margin: 0 16px 16px;
+        font-size: 14px;
+        color: #334155;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        flex-wrap: wrap;
+      }
+
+      .products a p strong {
+        color: #0f172a;
+        font-weight: 600;
+        margin-right: 4px;
+      }
+
+      .products a p strong:first-of-type {
+        display: inline-flex;
+        align-items: center;
+        gap: 2px;
+      }
+
+      .products a p strong:first-of-type::before {
+        content: "★";
+        color: #fbbf24;
+        font-size: 14px;
+        margin-right: 4px;
+      }
+
+      /* Not found message */
+      .products p:only-child {
+        grid-column: 1 / -1;
+        text-align: center;
+        padding: 60px 20px;
+        background: #f8fafc;
+        border-radius: 16px;
+        border: 2px dashed #e2e8f0;
+        font-size: 18px;
+        color: #475569;
+        margin: 0;
+      }
+
+      /* Responsive styles */
+      @media (max-width: 768px) {
+        .container {
+          padding: 15px;
+        }
+
+        .products {
+          grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+          gap: 20px;
+        }
+
+        .image {
+          height: 220px;
+          padding: 20px;
+        }
+
+        .title {
+          font-size: 15px;
+          margin: 14px 14px 6px;
+        }
+
+        .price {
+          font-size: 20px;
+          margin: 0 14px 6px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .products {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- list products -->
+    <div class="container">
+      <div class="products"></div>
+    </div>
+
+    <script>
+      const show = document.querySelector(".products");
+
+      async function getProducts() {
+        try {
+          // get responce data
+          const responce = await fetch("https://fakestoreapi.com/products");
+          // change to json
+          const listProducts = await responce.json();
+          displayProducts(listProducts);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      function displayProducts(data) {
+        if (data.length === 0) {
+          return (show.innerHTML = "<p> Product is not found!! </p>");
+        }
+
+        // build the html for get data
+        let htmlContent = "";
+
+        data.forEach((p) => {
+          htmlContent += `
+            <a href="fetch-single-api.html?id=${p.id}">
+                <img src="${p.image}" alt="${p.title}" class="image" />
+                <div class="title">${p.title}</div>
+                <div class="price">${p.price}</div>
+                <div class="description">${p.description}</div>
+                <div class="category">${p.category}</div>
+                <p><strong>Rating:</strong> ${p.rating.rate} (${p.rating.count} reviews)</p>
+
+            </a>
+            `;
+        });
+        show.innerHTML = htmlContent;
+      }
+      // return result
+      getProducts();
+    </script>
+  </body>
+</html>
