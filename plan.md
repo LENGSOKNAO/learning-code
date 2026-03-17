@@ -25,7 +25,7 @@
 - database (22/3/2026)
 - eloquent ORM (22/3/2026)
 - ai (23/3/2026)
-- testing (24/3/2026)
+- testing (24/3/2026)X`X
 - packages (25/3/2026)
 - changelog (26/3/2026)
 

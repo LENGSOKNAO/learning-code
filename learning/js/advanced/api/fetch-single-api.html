@@ -429,6 +429,7 @@
         const id = urlParams.get("id");
         return id ? parseInt(id) : null;
       }
+      // get only selected
       async function getProducts(id) {
         try {
           // get responce data when click for main page
@@ -449,7 +450,7 @@
         }
 
         const htmlContent = `
-            <a href="fetch-single-api.html?id=${p.id}">
+            <a href="">
                 <img src="${p.image}" alt="${p.title}" class="image" />
                 <div class="title">${p.title}</div>
                 <div class="price">${p.price}</div>

@@ -19,6 +19,7 @@
 
     $name = $email = $website = $comment = '';
     $nameErr  = $emailErr = $websiteErr = $commentErr = '';
+
         // if($_SERVER['REQUEST_METHOD'] == 'POST'){
         //     echo $name = test_input($_POST['name']). "</br>";   
         //     echo $email = test_input($_POST['email']). "</br>";   

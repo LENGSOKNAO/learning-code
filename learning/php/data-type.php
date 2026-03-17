@@ -38,4 +38,5 @@ echo "Resource (closed): ";
 var_dump($resource);
 echo "</pre>";
 
+
 ?>
