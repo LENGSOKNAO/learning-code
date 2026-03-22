@@ -47,6 +47,7 @@ return Application::configure(basePath: dirname(__DIR__))
         //     'log.activity' => LogActivity::class,
         //     'cart.notempty'=> CheckCartNotEmpty::class,
         // ]);
+
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

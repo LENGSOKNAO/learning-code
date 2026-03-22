@@ -30,3 +30,26 @@
 - changelog (26/3/2026)
 
 - clone 
+
+
+
+
+js
+- api only
+php 
+- admin (control data)
+laravel
+- migration
+- model 
+- middleware
+- request
+- controller
+- route
+- factory
+- seed
+- service
+- event
+- job
+- notifiction
+- policis
+- artisan commands

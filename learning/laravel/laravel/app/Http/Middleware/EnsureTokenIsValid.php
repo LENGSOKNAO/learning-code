@@ -13,16 +13,16 @@ class EnsureTokenIsValid
      *
      * @param  Closure(Request): (Response)  $next
      */
-    public function handle(Request $request, Closure $next, string $role): Response
+    public function handle(Request $request, Closure $next): Response
     {
         if ($request->input('token') === 'my-scert-token') {
             return redirect('/home');
         }
 
         //  Middleware Parameters
-        if (!$request->user()->hasRole($role)) {
-            //
-        }
+        // if (!$request->user()->hasRole($role)) {
+        //     //
+        // }
 
         // return $next($request);
 

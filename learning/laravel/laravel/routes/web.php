@@ -1,17 +1,30 @@
 <?php
 
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\Settings\ProfileController;
 use App\Http\Middleware\EnsureTokenIsValid;
+use App\Notifications\OrderConfirmed;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
+use Pest\Plugins\Profile;
 use Symfony\Component\HttpFoundation\Request;
 
 Route::inertia('/', 'welcome', [
     'canRegister' => Features::enabled(Features::registration()),
 ])->name('home');
 
+
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::inertia('dashboard', 'dashboard')->name('dashboard');
-});
+
+    Route::get('/dashboard', function () {
+        return inertia('dashboard');
+
+    })->name('dashboard');
+    });
+    
+    Route::get('ts', [ProfileController::class, "index"]);
 
 // 1. Basic Routing
 
